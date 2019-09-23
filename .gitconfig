@@ -1,0 +1,7 @@
+[user]
+	email = vnagel@umich.edu
+	name = Vincent Nagel
+[hub]
+	protocol = https
+[diff]
+	tool = meld
