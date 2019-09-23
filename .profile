@@ -23,4 +23,9 @@ if [ -n "$ZSH_VERSION" ]; then
 	. "$HOME/.zshrc"
     fi
 fi
-mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"&
+
+if type "/usr/bin/google-drive-ocamlfuse" > /dev/null; then
+  mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"&
+else
+  echo "/usr/bin/google-drive-ocamlfuse does not exist"
+fi

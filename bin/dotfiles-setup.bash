@@ -4,7 +4,7 @@ git clone --bare https://github.com/vnagel/dotfiles $HOME/.dotfiles
 function dotfiles {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
-mkdir .dotfiles-backup
+mkdir .dotfiles-backup-$(date | sed "s/ /_/g")
 dotfiles checkout
 if [ $? = 0 ]; then
   echo "Checked out dotfiles";
@@ -13,4 +13,7 @@ if [ $? = 0 ]; then
     dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
 fi;
 dotfiles checkout
-dotfiles config status.showUntrackedFiles no     
+dotfiles config status.showUntrackedFiles no
+source $HOME/.profile
+source $HOME/.bashrc
+source $HOME/.zshrc
