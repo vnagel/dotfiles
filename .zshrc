@@ -117,18 +117,6 @@ alias mplay="rhythmbox-client --play"
 alias mpause="rhythmbox-client --pause"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-#Functions
-function git-add-second-push-remote() {
-  if [ "$#" -ne 1 ]; then
-    echo "Illegal number of parameters"
-    return
-  fi
-
-  old=$(git remote -v | grep -oP "(?<=origin\s)(.+)(?=\s\(fetch\))")
-  git remote set-url --add --push origin $old
-  git remote set-url --add --push origin $1
-}
-
 # Other
 export VISUAL=vim 
 export EDITOR="$VISUAL"

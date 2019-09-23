@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Stop on errors
+set -Eeuo pipefail
+
+if [ "$#" -ne 1 ]; then
+  echo "Illegal number of parameters"
+  return
+fi
+
+old=$(git remote -v | grep -oP "(?<=origin\s)(.+)(?=\s\(fetch\))")
+git remote set-url --add --push origin $old
+git remote set-url --add --push origin $1
