@@ -1,6 +1,21 @@
 #!/bin/bash
-if ! type "/bin/zsh" >/dev/null 2>&1; then
-  sudo apt install zsh
+sudo apt update
+pkgs=(build-essential curl dos2unix git htop hub meld tree valgrind vim wget xclip zsh)
+for pkg in "${pkgs[@]}"; do
+  if ! type $pkg >/dev/null 2>&1; then
+    sudo apt install $pkg
+  fi
+done
+
+if ! type copyq >/dev/null 2>&1; then
+  sudo add-apt-repository ppa:hluk/copyq
+  sudo apt update
+  sudo apt install copyq
+fi
+
+if ! type google-chrome-stable >/dev/null 2>&1; then
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo apt install ./google-chrome*.deb
 fi
 
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
