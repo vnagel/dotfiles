@@ -1,11 +1,15 @@
 #!/bin/bash
 sudo apt update
-pkgs=(build-essential curl dos2unix git htop hub meld tree valgrind vim wget xclip zsh)
+pkgs=(build-essential curl dos2unix git htop meld tree valgrind vim wget xclip zsh)
 for pkg in "${pkgs[@]}"; do
   if ! type $pkg >/dev/null 2>&1; then
-    sudo apt install $pkg
+    sudo apt -y install $pkg
   fi
 done
+
+if ! type hub >/dev/null 2>&1; then
+  sudo snap install hub --classic
+fi
 
 if ! type copyq >/dev/null 2>&1; then
   sudo add-apt-repository ppa:hluk/copyq
