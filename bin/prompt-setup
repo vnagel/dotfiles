@@ -10,29 +10,28 @@ RESET="\033[0m"
 
 date_color()
 {
-  if [[ ! $PWD/ =~ \/fun\/ ]]; then
-    echo -e "$BLUE"
-  else
+  if [[ $PWD/ =~ \/fun\/ ]]; then 
     echo -e "\033[38;5;$(shuf -i 16-233 -n 1)m"
+  else
+    echo -e "$BLUE"
   fi
 }
 
 time_color()
 {
-  if [[ ! $PWD/ =~ \/fun\/ ]]; then
-    echo -e "$LBLUE"
-  else
+  if [[ $PWD/ =~ \/fun\/ ]]; then 
     echo -e "\033[38;5;$(shuf -i 16-233 -n 1)m"
-  fi
+  else
+    echo -e "$LBLUE"
+ fi
 }
-
 
 dir_color()
 {
-  if [[ ! $PWD/ =~ \/fun\/ ]]; then
-    echo -e "$GREEN"
-  else
+  if [[ $PWD/ =~ \/fun\/ ]]; then
     echo -e "\033[38;5;$(shuf -i 16-233 -n 1)m"
+  else
+    echo -e "$GREEN"
   fi
 }
 
