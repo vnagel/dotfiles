@@ -140,7 +140,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # GO
+export PATH=$PATH:/usr/local/go/bin
 if type go >/dev/null; then
-  export PATH=$PATH:/usr/local/go/bin
   export GOPATH=$(go env GOPATH)
 fi
