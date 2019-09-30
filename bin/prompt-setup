@@ -44,11 +44,11 @@ reset()
 prompt()
 {
   if [[ $PWD/ =~ \/fun\/ ]]; then
-    echo -en "${EMOJIS[$RANDOM % $EMOJIS_LENGTH]} "
+    echo -e "${EMOJIS[$RANDOM % $EMOJIS_LENGTH]} "
   else
-    echo -en "➜ "
+    echo -e "➜ "
   fi
 }
 
-PS1='\[$(date_color)\]\d\[$(reset)\] \[$(time_color)\]\@\[$(reset)\] \[$(dir_color)\]\w\[$(reset)\] $(prompt)'
+PS1='\[$(date_color)\]\d \[$(time_color)\]\@ \[$(dir_color)\]\w\[$(reset)\] $(prompt)'
 PS2="➜ ➜ "
