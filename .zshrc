@@ -117,7 +117,7 @@ alias open="xdg-open"
 alias mplay="rhythmbox-client --play"
 alias mpause="rhythmbox-client --pause"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
+alias mount-gdrive='mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"'
 # Other
 export VISUAL=vim 
 export EDITOR="$VISUAL"
