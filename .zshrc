@@ -112,12 +112,14 @@ alias dos2unix-all-subdir="find . -type f -print0 | xargs -0 dos2unix"
 alias c="xclip -selection clipboard"
 alias cd490="cd /home/vnagel/Documents/code/School/eecs490"
 alias cd491="cd /home/vnagel/Documents/code/School/eecs491"
+alias cdpaf="cd /home/vnagel/Documents/code/Other/photo-assassin-cloud-functions"
 alias run-search-engine="cd /home/vnagel/Documents/code/School/eecs398-search-engine && make HttpServer && ./Bin/HttpServer 8000"
 alias open="xdg-open"
 alias mplay="rhythmbox-client --play"
 alias mpause="rhythmbox-client --pause"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mount-gdrive='mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"'
+alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
 # Other
 export VISUAL=vim 
 export EDITOR="$VISUAL"
