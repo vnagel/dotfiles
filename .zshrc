@@ -120,6 +120,7 @@ alias mpause="rhythmbox-client --pause"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mount-gdrive='mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"'
 alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
+alias sshcaen="ssh login-course.engin.umich.edu"
 # Other
 export VISUAL=vim 
 export EDITOR="$VISUAL"
