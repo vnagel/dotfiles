@@ -119,7 +119,6 @@ alias open="xdg-open"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mount-gdrive='mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"'
 alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
-alias sshcaen="ssh login-course.engin.umich.edu"
 m(){rhythmbox-client "--$1"}
 # Other
 export VISUAL=vim 
