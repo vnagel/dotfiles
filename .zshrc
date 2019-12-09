@@ -72,7 +72,8 @@ colored-man-pages
 per-directory-history
 git-extras
 gitignore
-copybuffer)
+copybuffer
+ubuntu)
 
 source $ZSH/oh-my-zsh.sh
 
