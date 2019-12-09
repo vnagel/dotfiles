@@ -69,8 +69,10 @@ command-not-found
 extract
 vi-mode
 colored-man-pages
-github 
-per-directory-history)
+per-directory-history
+git-extras
+gitignore
+copybuffer)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,7 +111,7 @@ alias vimconfig="vim ~/.vimrc"
 alias git-branch-all-subdir="find . -name .git -execdir git rev-parse --show-toplevel \; -execdir git branch -a \;"
 alias git-status-all-subdir="find . -name .git -execdir git rev-parse --show-toplevel \; -execdir git status -s \;" 
 alias dos2unix-all-subdir="find . -type f -print0 | xargs -0 dos2unix"
-alias c="xclip -selection clipboard"
+alias c="clipcopy"
 alias cd490="cd /home/vnagel/Documents/code/School/eecs490"
 alias cd491="cd /home/vnagel/Documents/code/School/eecs491"
 alias cdpa="cd /home/vnagel/Documents/code/Other/photo-assassin-android-app"
