@@ -123,6 +123,7 @@ alias open="xdg-open"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mount-gdrive='mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"'
 alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
+alias installed="comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)"
 m(){rhythmbox-client "--$1"}
 
 # Other
