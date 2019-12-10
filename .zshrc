@@ -132,7 +132,10 @@ alias open="xdg-open"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mount-gdrive='mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"'
 alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
-alias installed="comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)"
+alias ls-apt-installed="comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)"
+alias ls-npm-installed="npm list -g --depth 0"
+alias ls-cargo-installed="cargo install --list"
+alias ls-installed="{ echo '----apt----';ls-apt-installed;echo '\n----npm----';ls-npm-installed;echo '----cargo----';ls-cargo-installed; } 2> /dev/null"
 alias fd="fdfind"
 m(){rhythmbox-client "--$1"}
 
