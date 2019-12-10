@@ -73,7 +73,8 @@ per-directory-history
 git-extras
 gitignore
 copybuffer
-ubuntu)
+ubuntu
+fasd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,16 +124,17 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mount-gdrive='mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"'
 alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
 m(){rhythmbox-client "--$1"}
+
 # Other
 export VISUAL=vim 
 export EDITOR="$VISUAL"
+
 unsetopt nomatch
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -149,3 +151,7 @@ export PATH=$PATH:/usr/local/go/bin
 if type go >/dev/null; then
   export GOPATH=$(go env GOPATH)
 fi
+
+eval "$(fasd --init auto)"
+
+source /home/vnagel/.config/broot/launcher/bash/br
