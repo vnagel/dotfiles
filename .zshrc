@@ -83,7 +83,6 @@ git-extras
 gitignore
 copybuffer
 ubuntu
-fasd
 fzf)
 
 source $ZSH/oh-my-zsh.sh
@@ -171,7 +170,7 @@ if type go >/dev/null; then
   export GOPATH=$(go env GOPATH)
 fi
 
-eval "$(fasd --init auto)"
+source /usr/share/autojump/autojump.sh
 
 source /home/vnagel/.config/broot/launcher/bash/br
 
