@@ -122,3 +122,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+source /home/vnagel/.config/broot/launcher/bash/br
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -57,6 +57,15 @@ ENABLE_CORRECTION="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Set fzf installation directory path
+# export FZF_BASE=/path/to/fzf/install/dir
+
+# Uncomment the following line to disable fuzzy completion
+# export DISABLE_FZF_AUTO_COMPLETION="true"
+
+# Uncomment the following line to disable key bindings (CTRL-T, CTRL-R, ALT-C)
+# export DISABLE_FZF_KEY_BINDINGS="true"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -69,8 +78,12 @@ command-not-found
 extract
 vi-mode
 colored-man-pages
-github 
-per-directory-history)
+per-directory-history
+git-extras
+gitignore
+copybuffer
+ubuntu
+fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,27 +122,40 @@ alias vimconfig="vim ~/.vimrc"
 alias git-branch-all-subdir="find . -name .git -execdir git rev-parse --show-toplevel \; -execdir git branch -a \;"
 alias git-status-all-subdir="find . -name .git -execdir git rev-parse --show-toplevel \; -execdir git status -s \;" 
 alias dos2unix-all-subdir="find . -type f -print0 | xargs -0 dos2unix"
-alias c="xclip -selection clipboard"
+alias c="clipcopy"
 alias cd490="cd /home/vnagel/Documents/code/School/eecs490"
 alias cd491="cd /home/vnagel/Documents/code/School/eecs491"
+alias cdpa="cd /home/vnagel/Documents/code/Other/photo-assassin-android-app"
 alias cdpaf="cd /home/vnagel/Documents/code/Other/photo-assassin-cloud-functions"
 alias run-search-engine="cd /home/vnagel/Documents/code/School/eecs398-search-engine && make HttpServer && ./Bin/HttpServer 8000"
 alias open="xdg-open"
-alias mplay="rhythmbox-client --play"
-alias mpause="rhythmbox-client --pause"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mount-gdrive='mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"'
 alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
+alias ls-apt-installed="comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)"
+alias ls-npm-installed="npm list -g --depth 0"
+alias ls-cargo-installed="cargo install --list"
+alias ls-installed="{ echo '----apt----';ls-apt-installed;echo '\n----npm----';ls-npm-installed;echo '----cargo----';ls-cargo-installed; } 2> /dev/null"
+alias fd="fdfind"
+m(){rhythmbox-client "--$1"}
+
 # Other
 export VISUAL=vim 
 export EDITOR="$VISUAL"
+
+FD_OPTIONS="--follow --exclude .git --exclude node_modules"
+export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --inline-info --preview='(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300' --preview-window='right:hidden:wrap' --bind='f3:execute(bat --style=numbers {} || less -f {}),f2:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept'"
+export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fdfind --type f --type l $FD_OPTIONS"
+export FZF_CTRL_T_COMMAND="fdfind $FD_OPTIONS"
+export FZF_ALT_C_COMMAND="fdfind --type d $FD_OPTIONS"
+export BAT_PAGER="less -R"
+
 unsetopt nomatch
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -146,3 +172,9 @@ export PATH=$PATH:/usr/local/go/bin
 if type go >/dev/null; then
   export GOPATH=$(go env GOPATH)
 fi
+
+source /usr/share/autojump/autojump.sh
+
+source /home/vnagel/.config/broot/launcher/bash/br
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

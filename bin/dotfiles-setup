@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt update
-pkgs=(build-essential curl dos2unix git htop meld tree valgrind vim wget xclip zsh)
+pkgs=(build-essential curl dos2unix git htop tree valgrind vim wget xclip zsh git-extras)
 for pkg in "${pkgs[@]}"; do
   if ! type $pkg >/dev/null 2>&1; then
     sudo apt -y install $pkg
