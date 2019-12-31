@@ -1,0 +1,47 @@
+#!/bin/bash
+# assumes script is run as login shell as vnagel e.g. "sudo -Hi -u vnagel /home/vnagel/.config/backintime/user-callback <args>"
+# args can be found at https://github.com/bit-team/backintime/blob/master/common/plugins/usercallbackplugin.py
+
+export DISPLAY=:1.0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+
+profile_id="$1"
+profile_name="$2"
+reason="$3"
+
+PACKAGE_LIST_FILEPATH="/home/vnagel/package-list.txt"
+
+case $reason in
+    1) # Backup process begins
+        notify-send --urgency=LOW --icon=face-plain "BackInTime" "Starting backup '${profile_id}:${profile_name}'" 
+        /home/vnagel/bin/ls-installed > $PACKAGE_LIST_FILEPATH 
+        ;;
+    2) # Backup process ends
+        notify-send --urgency=NORMAL --icon=face-cool "BackInTime" "Finishing backup '${profile_id}:${profile_name}'"
+        ;;
+    3) # A new snapshot was taken
+        snapshot_id="$4"
+        snapshot_path="$5"
+        notify-send --urgency=NORMAL --icon=face-laugh "BackInTime" "Finished backup '${profile_id}:${profile_name}' successfully\nfor snapshot '${snapshot_id}:${snapshot_path}'"
+        ;;
+    4) # There was an error
+        error_code="$4"
+        error_message="$5"
+        case $error_code in
+            1) # The application is not configured
+                notify-send --urgency=CRITICAL --icon=face-angry "BackInTime Error" "The application is not configured!"
+                ;;
+            2) # A "take snapshot" process is already running
+                notify-send --urgency=CRITICAL --icon=face-angry "BackInTime Error" "A 'take snapshot' process already running!"
+                ;;
+            3) # Can't find snapshots folder
+                notify-send --urgency=CRITICAL --icon=face-angry "BackInTime Error" "Can't find snapshots folder!"
+                ;;
+            4) # A snapshot for "now" already exists
+                notify-send --urgency=CRITICAL --icon=face-angry "BackInTime Error" "A snapshot for 'now' already exists!"
+                ;;
+        esac
+        ;;
+esac
+
+exit 0

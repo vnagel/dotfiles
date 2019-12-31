@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ls-apt-installed(){
+    comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)
+}
+
+ls-npm-installed(){
+    npm list -g --depth 0
+}
+
+ls-cargo-installed(){
+    cargo install --list
+}
+
+ls-installed(){
+    echo '----apt----'
+    ls-apt-installed
+    echo -e '\n----npm----'
+    ls-npm-installed
+    echo '----cargo----'
+    ls-cargo-installed
+}
+
+ls-installed 2> /dev/null
