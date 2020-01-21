@@ -123,6 +123,7 @@ alias git-branch-all-subdir="find . -name .git -execdir git rev-parse --show-top
 alias git-status-all-subdir="find . -name .git -execdir git rev-parse --show-toplevel \; -execdir git status -s \;" 
 alias dos2unix-all-subdir="find . -type f -print0 | xargs -0 dos2unix"
 alias c="clipcopy"
+alias cw="clip.exe"
 alias cd490="cd /home/vnagel/Documents/code/School/eecs490"
 alias cd491="cd /home/vnagel/Documents/code/School/eecs491"
 alias cdpa="cd /home/vnagel/Documents/code/Other/photo-assassin-android-app"
