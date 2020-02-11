@@ -25,6 +25,7 @@ alias git-branch-all-subdir="find . -name .git -execdir git rev-parse --show-top
 alias git-status-all-subdir="find . -name .git -execdir git rev-parse --show-toplevel \; -execdir git status -s \;" 
 alias dos2unix-all-subdir="find . -type f -print0 | xargs -0 dos2unix"
 alias c="clipcopy"
+alias cw="clip.exe"
 alias run-search-engine="cd /home/vnagel/Documents/code/School/eecs398-search-engine && make HttpServer && ./Bin/HttpServer 8000"
 alias open="xdg-open"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
