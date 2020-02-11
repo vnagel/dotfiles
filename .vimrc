@@ -21,7 +21,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set relativenumber
+set number
 set clipboard^=unnamed,unnamedplus
 
 " Sets how many lines of history VIM has to remember
