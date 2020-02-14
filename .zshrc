@@ -29,9 +29,13 @@ alias cw="clip.exe"
 alias run-search-engine="cd /home/vnagel/Documents/code/School/eecs398-search-engine && make HttpServer && ./Bin/HttpServer 8000"
 alias open="xdg-open"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias mount-gdrive='mount | grep "${HOME}/google-drive" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive"'
+alias mount-gdrive='mount | grep "${HOME}/google-drive-mnt" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive-mnt"'
 alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
 alias fd="fdfind"
+alias notes="code ~/google-drive/Notes/"
+sync-notes(){
+  $(DIR="$PWD" && cd ~/google-drive/ && grive -s Notes && cd "$DIR")
+}
 m(){rhythmbox-client "--$1"}
 
 # Other
