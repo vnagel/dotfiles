@@ -32,8 +32,8 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mount-gdrive='mount | grep "${HOME}/google-drive-mnt" >/dev/null || /usr/bin/google-drive-ocamlfuse "${HOME}/google-drive-mnt"'
 alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
 alias fd="fdfind"
-alias notes="code ~/google-drive/Notes/"
-alias sync-notes='$(cd ~/google-drive/ && grive -s Notes)'
+alias notes="code ~/google-drive/notes/"
+alias sync-notes='$(cd ~/google-drive/ && grive -s notes)'
 m(){rhythmbox-client "--$1"}
 
 # Other
