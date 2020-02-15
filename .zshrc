@@ -33,9 +33,7 @@ alias mount-gdrive='mount | grep "${HOME}/google-drive-mnt" >/dev/null || /usr/b
 alias studio="/home/vnagel/opt/android-studio/bin/studio.sh"
 alias fd="fdfind"
 alias notes="code ~/google-drive/Notes/"
-sync-notes(){
-  $(DIR="$PWD" && cd ~/google-drive/ && grive -s Notes && cd "$DIR")
-}
+alias sync-notes='$(cd ~/google-drive/ && grive -s Notes)'
 m(){rhythmbox-client "--$1"}
 
 # Other
