@@ -12,6 +12,10 @@ ls-cargo-installed(){
     cargo install --list
 }
 
+ls-snap-installed(){
+    snap list
+}
+
 ls-installed(){
     echo '----apt----'
     ls-apt-installed
@@ -19,6 +23,8 @@ ls-installed(){
     ls-npm-installed
     echo '----cargo----'
     ls-cargo-installed
+    echo -e '\n----snap----'
+    ls-snap-installed
 }
 
 ls-installed 2> /dev/null
