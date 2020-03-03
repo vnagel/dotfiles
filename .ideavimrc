@@ -1,9 +1,4 @@
 source ~/.vimrc
-set ignorecase
-set incsearch
-set showmode
-set smartcase
-set wrapscan
 set ideajoin
 set easymotion
 set surround
