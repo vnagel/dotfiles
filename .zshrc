@@ -1,5 +1,5 @@
 export ZSH="/home/vnagel/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="spaceship"
 ENABLE_CORRECTION="true"
 
 plugins=(

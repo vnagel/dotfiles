@@ -1,0 +1,12 @@
+set ignorecase
+set incsearch
+set showmode
+set smartcase
+set wrapscan
+set easymotion
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set textobj-entire
+source ~/.vimrc
