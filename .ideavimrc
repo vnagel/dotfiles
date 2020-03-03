@@ -1,3 +1,4 @@
+source ~/.vimrc
 set ignorecase
 set incsearch
 set showmode
@@ -10,4 +11,3 @@ set multiple-cursors
 set commentary
 set argtextobj
 set textobj-entire
-source ~/.vimrc
