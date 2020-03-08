@@ -9,12 +9,9 @@ profile_id="$1"
 profile_name="$2"
 reason="$3"
 
-PACKAGE_LIST_FILEPATH="/home/vnagel/package-list.txt"
-
 case $reason in
     1) # Backup process begins
         notify-send --urgency=LOW --icon=face-plain "BackInTime" "Starting backup '${profile_id}:${profile_name}'" 
-        /home/vnagel/bin/ls-installed > $PACKAGE_LIST_FILEPATH 
         ;;
     2) # Backup process ends
         notify-send --urgency=NORMAL --icon=face-cool "BackInTime" "Finishing backup '${profile_id}:${profile_name}'"

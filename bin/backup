@@ -1,0 +1,5 @@
+#!/bin/bash
+
+PACKAGE_LIST_FILEPATH="$HOME/package-list.txt"
+"$HOME/bin/ls-installed" > "$PACKAGE_LIST_FILEPATH"
+sudo backintime backup
