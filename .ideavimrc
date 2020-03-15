@@ -6,3 +6,4 @@ set multiple-cursors
 set commentary
 set argtextobj
 set textobj-entire
+map <C-e> :action RecentFiles<CR>

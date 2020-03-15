@@ -11,7 +11,6 @@ vi-mode
 colored-man-pages
 per-directory-history
 git-extras
-gitignore
 copybuffer
 ubuntu
 fzf)
