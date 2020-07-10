@@ -1,45 +1,43 @@
 #!/bin/bash
 sudo apt update
-pkgs=(build-essential curl dos2unix git htop tree valgrind vim wget xclip zsh git-extras)
+pkgs=(build-essential curl dos2unix git htop tree valgrind vim wget xclip zsh git-extras autojump fd-find fonts-powerline ripgrep bat)
 for pkg in "${pkgs[@]}"; do
-  if ! type $pkg >/dev/null 2>&1; then
-    sudo apt -y install $pkg
+  if ! type "$pkg" >/dev/null 2>&1; then
+    sudo apt -y install "$pkg"
   fi
 done
 
-if ! type hub >/dev/null 2>&1; then
-  sudo snap install hub --classic
+if ! type fzf >/dev/null 2>&1; then
+  git clone --depth 1 "https://github.com/junegunn/fzf.git" "$HOME/.fzf"
+  "$HOME/.fzf/install"
 fi
 
-if ! type copyq >/dev/null 2>&1; then
-  sudo add-apt-repository ppa:hluk/copyq
-  sudo apt update
-  sudo apt install copyq
+if ! type cargo >/dev/null 2>&1; then
+  curl https://sh.rustup.rs -sSf | sh -s -- -y
 fi
 
-if ! type google-chrome-stable >/dev/null 2>&1; then
-  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  sudo apt install ./google-chrome*.deb
+if ! type broot >/dev/null 2>&1; then
+  cargo install broot
 fi
 
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
   chsh -s $(which zsh)
 fi
 
-if [ ! -d "/home/vnagel/.oh-my-zsh" ]; then
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]; then
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
+  git clone "https://github.com/zsh-users/zsh-autosuggestions" "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 fi
 
-if [ ! -d "/home/vnagel/.dotfiles" ]; then
-  git clone --bare https://github.com/vnagel/dotfiles $HOME/.dotfiles
+if [ ! -d "$HOME/.dotfiles" ]; then
+  git clone --bare "https://github.com/vnagel/dotfiles" "$HOME/.dotfiles"
 fi
 
 function dotfiles() {
-  /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+  /usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" $@
 }
 
 function require_clean_work_tree() {
@@ -82,5 +80,4 @@ else
 fi
 dotfiles config status.showUntrackedFiles no
 
-source $HOME/.profile
 zsh -c "source $HOME/.zshrc"
